@@ -20,45 +20,55 @@ function App() {
     );
 
     return (
-        <div>
+        <div className="app">
             <Navbar />
-            <h1>Finance Dashboard</h1>
 
-            <input
-                type="text"
-                placeholder="Search coin..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
+            <div className="dashboard-container">
+                <h1 className="title">Finance Dashboard</h1>
 
-            {coins.length === 0 ? (
-                <p>Loading...</p>
-            ) : (
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>24h Change</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {filteredCoins.map((coin) => (
-                        <tr key={coin.CoinInfo.Name}>
-                            <td>{coin.CoinInfo.FullName}</td>
-                            <td>{coin.DISPLAY.USD.PRICE}</td>
-                            <td
-                                style={{
-                                    color: coin.RAW.USD.CHANGEPCT24HOUR >= 0 ? "green" : "red",
-                                }}
-                            >
-                                {coin.DISPLAY.USD.CHANGEPCT24HOUR}%
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            )}
+                <div className="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search coin..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
+
+                <div className="table-card">
+                    {coins.length === 0 ? (
+                        <p className="loading-text">Loading...</p>
+                    ) : (
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {filteredCoins.map((coin) => (
+                                <tr key={coin.CoinInfo.Name}>
+                                    <td>{coin.CoinInfo.FullName}</td>
+                                    <td>{coin.DISPLAY.USD.PRICE}</td>
+                                    <td
+                                        style={{
+                                            color:
+                                                coin.RAW.USD.CHANGEPCT24HOUR >= 0
+                                                    ? "#5bcf9b"
+                                                    : "#e573a9"
+                                        }}
+                                    >
+                                        {coin.DISPLAY.USD.CHANGEPCT24HOUR}%
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
