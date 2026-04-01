@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { fetchCoins } from "./services/api";
+import { Link } from "react-router-dom";
 
 function App() {
     const [coins, setCoins] = useState([]);
@@ -60,7 +61,11 @@ function App() {
                             <tbody>
                             {filteredCoins.map((coin) => (
                                 <tr key={coin.CoinInfo.Name}>
-                                    <td>{coin.CoinInfo.FullName}</td>
+                                    <td>
+                                        <Link to={`/coin/${coin.CoinInfo.Name}`}>
+                                            {coin.CoinInfo.FullName}
+                                        </Link>
+                                    </td>
                                     <td>{coin.DISPLAY.USD.PRICE}</td>
                                     <td
                                         style={{
