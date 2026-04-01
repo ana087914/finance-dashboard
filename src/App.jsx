@@ -5,6 +5,7 @@ import { fetchCoins } from "./services/api";
 function App() {
     const [coins, setCoins] = useState([]);
     const [search, setSearch] = useState("");
+    const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
         async function loadData() {
@@ -14,6 +15,14 @@ function App() {
 
         loadData();
     }, []);
+
+    function toggleFavorite(symbol) {
+        if (favorites.includes(symbol)) {
+            setFavorites(favorites.filter((item) => item !== symbol));
+        } else {
+            setFavorites([...favorites, symbol]);
+        }
+    }
 
     const filteredCoins = coins.filter((coin) =>
         coin.CoinInfo.FullName.toLowerCase().includes(search.toLowerCase())
@@ -45,6 +54,7 @@ function App() {
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>24h Change</th>
+                                <th>Favorite</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -57,10 +67,18 @@ function App() {
                                             color:
                                                 coin.RAW.USD.CHANGEPCT24HOUR >= 0
                                                     ? "#5bcf9b"
-                                                    : "#e573a9"
+                                                    : "#e573a9",
                                         }}
                                     >
                                         {coin.DISPLAY.USD.CHANGEPCT24HOUR}%
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="favorite-button"
+                                            onClick={() => toggleFavorite(coin.CoinInfo.Name)}
+                                        >
+                                            {favorites.includes(coin.CoinInfo.Name) ? "★" : "☆"}
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

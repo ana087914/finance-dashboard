@@ -87,3 +87,10 @@ td {
 tr:hover {
   background: #E6E4CE;
 }
+.favorite-button {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #5a3d6e;
+}
