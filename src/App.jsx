@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
+import CoinRow from "./components/CoinRow";
 import { fetchCoins } from "./services/api";
-import { Link } from "react-router-dom";
 
 function App() {
     const [coins, setCoins] = useState([]);
@@ -36,14 +37,7 @@ function App() {
             <div className="dashboard-container">
                 <h1 className="title">Finance Dashboard</h1>
 
-                <div className="search-box">
-                    <input
-                        type="text"
-                        placeholder="Search coin..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </div>
+                <SearchBar search={search} setSearch={setSearch} />
 
                 <div className="table-card">
                     {coins.length === 0 ? (
@@ -60,32 +54,12 @@ function App() {
                             </thead>
                             <tbody>
                             {filteredCoins.map((coin) => (
-                                <tr key={coin.CoinInfo.Name}>
-                                    <td>
-                                        <Link to={`/coin/${coin.CoinInfo.Name}`}>
-                                            {coin.CoinInfo.FullName}
-                                        </Link>
-                                    </td>
-                                    <td>{coin.DISPLAY.USD.PRICE}</td>
-                                    <td
-                                        style={{
-                                            color:
-                                                coin.RAW.USD.CHANGEPCT24HOUR >= 0
-                                                    ? "#5bcf9b"
-                                                    : "#e573a9",
-                                        }}
-                                    >
-                                        {coin.DISPLAY.USD.CHANGEPCT24HOUR}%
-                                    </td>
-                                    <td>
-                                        <button
-                                            className="favorite-button"
-                                            onClick={() => toggleFavorite(coin.CoinInfo.Name)}
-                                        >
-                                            {favorites.includes(coin.CoinInfo.Name) ? "★" : "☆"}
-                                        </button>
-                                    </td>
-                                </tr>
+                                <CoinRow
+                                    key={coin.CoinInfo.Name}
+                                    coin={coin}
+                                    favorites={favorites}
+                                    toggleFavorite={toggleFavorite}
+                                />
                             ))}
                             </tbody>
                         </table>
