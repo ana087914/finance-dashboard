@@ -3,6 +3,9 @@ import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import CoinRow from "./components/CoinRow";
 import { fetchCoins } from "./services/api";
+import CoinChart from "./components/CoinChart";
+
+<CoinChart coins={coins.slice(0, 10)} />
 
 function App() {
     const [coins, setCoins] = useState([]);
