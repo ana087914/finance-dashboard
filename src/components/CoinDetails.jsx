@@ -24,7 +24,7 @@ function CoinDetails() {
 
   if (!coin) return <p>Loading...</p>;
 
-  return (
+  return ( //ia iard ul  monedei din ala de sus al paginii
     <div className="dashboard-container">
       <h1>{coin.CoinInfo.FullName}</h1>
 

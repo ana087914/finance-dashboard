@@ -1,6 +1,6 @@
-import { Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2"; //chart la lnumele sidcapullor,Eu folosesc Chart.js împreună cu react-chartjs-2.
 import {
-  Chart as ChartJS,
+  Chart as ChartJS, //Aici faci datele pentru
   ArcElement,
   Tooltip,
   Legend,

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; //Daca valorarea este mai mare sau egal cu z ,atunci e verde
 
 function CoinRow({ coin, favorites, toggleFavorite }) {
     return (
