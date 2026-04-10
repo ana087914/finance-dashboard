@@ -40,7 +40,7 @@ function App() {
 
         <SearchBar search={search} setSearch={setSearch} />
 
-        {/* Asta înseamnă că trimiți primele 10 coins la chart */}  {/*daca datele nu sunt incarcate arata aia  */}
+        {/* Asta înseamnă că trimiți primele 10 coins la chart ,gegevens*/}  {/*daca datele nu sunt incarcate arata aia  */}
         {coins.length > 0 && (
           <CoinChart coins={coins.slice(0, 10)} />
         )}
@@ -52,10 +52,10 @@ function App() {
             <table>
               <thead>
                 <tr>
-                  <th>Name</th> {/* îl ajută pe  să știe care rând este fiecare monedă.*/}
-                  <th>Price</th>
-                  <th>24h Change</th> {/*primul cuvant estel  dupa al 2*/}
-                  <th>Favorite</th> {/*lea tece prin fiecare cuvant si face un numele gen dupa<*/}
+                  <th>Name</th> {/* kîl ajută peR  să știe care rând este fiecare monedă.*/}
+                  <th>Price</th>{/* mcu aia arat toate monedele in tabel*/}
+                  <th>24h Change</th> {/*fprimul cuvant estel  dupa al 2*/}
+                  <th>Favorite</th> {/*lea trece prin fiecare moneda si face un numele gen dupa<*/}
                   </tr>
               </thead>
               <tbody>
